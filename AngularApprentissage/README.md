@@ -1,13 +1,11 @@
-
-
 # Université : ENSET Mohammedia
 
-## Module : les concepts de base de Angular
+**Module :** "Concepts de base de Angular"  
+**Réalisé par :** Bouchra RAFIK  
+**Encadré par :** M. Mohamed YOUSSFI  
+**Année universitaire :** 2025 – 2026
 
-### Réalisé par : Bouchra RAFIK
-### Encadré par : Mr.Mohamed YOUSSFI
-
-
+---
 
 # Product Manager — Angular 22 + Spring Boot 3
 
@@ -20,37 +18,53 @@ Application CRUD complète de gestion de produits, construite avec **Angular 22*
 | Fonctionnalité | Description |
 |---|---|
 | **Affichage** | Liste paginée de tous les produits |
-| **Recherche** | Filtrage des produits par nom (en temps réel) |
+| **Recherche** | Filtrage des produits par nom en temps réel |
 | **Pagination** | Navigation entre les pages (taille configurable) |
 | **Ajouter** | Formulaire de création d'un nouveau produit |
 | **Modifier** | Formulaire d'édition d'un produit existant |
 | **Supprimer** | Suppression avec confirmation |
-| **Cocher/Décocher** | Basculement de l'état `checked` d'un produit |
+| **Cocher / Décocher** | Basculement de l'état `checked` d'un produit |
 | **Dashboard** | Statistiques en temps réel (total, pages, cochés) |
 | **Indicateur de chargement** | Spinner HTTP automatique via intercepteur |
 | **Gestion des erreurs** | Affichage des erreurs API dans l'interface |
 
 ---
 
+## Aperçu de l'interface
+
+La page d'accueil illustre la mise en place du routing Angular et la composition du composant partagé `navbar`.
+J'ai appris à structurer une application Angular en pages indépendantes reliées par `AppRoutingModule`.
+
+![Page d'accueil — HomeComponent](screenshots/1-home.png)
+
+La page produits affiche le tableau CRUD complet : barre de recherche, résultats paginés et actions (modifier, supprimer, cocher).
+J'ai maîtrisé les directives `*ngFor` / `*ngIf`, la liaison de données bidirectionnelle et l'intégration du `ProductService`.
+
+![Liste des produits — vue CRUD complète](screenshots/2-products.png)
+
+---
+
 ## Technologies utilisées
 
 ### Frontend
+
 | Technologie | Version |
 |---|---|
 | Angular | 22 |
-| TypeScript | 6 |
+| TypeScript | 6.0 |
 | Bootstrap | 5.3 |
 | Bootstrap Icons | 1.11 |
 | RxJS | 7.8 |
 
 ### Backend
+
 | Technologie | Version |
 |---|---|
 | Java | 17 |
 | Spring Boot | 3.3 |
 | Spring Data JPA | 3.3 |
 | Hibernate | 6 |
-| H2 Database | (in-memory) |
+| H2 Database | in-memory |
 | Maven | 3.x |
 
 ---
@@ -157,11 +171,12 @@ mvn spring-boot:run
 L'API démarre sur **http://localhost:8086**
 
 > La base de données H2 est en mémoire et se remplit automatiquement depuis `data.sql` au démarrage.  
-> Console H2 (optionnelle) : http://localhost:8086/h2-console — JDBC URL : `jdbc:h2:mem:productdb`
+> Console H2 (optionnelle) : `http://localhost:8086/h2-console` — JDBC URL : `jdbc:h2:mem:productdb`
 
-### Résultat dans le terminal
+Ce terminal montre le démarrage complet de Spring Boot : initialisation de la base H2, exécution de `data.sql` et lancement de Tomcat sur le port 8086.
+J'ai appris à configurer CORS (`WebConfig.java`) et à exploiter une base H2 en mémoire pour le développement.
 
-![Spring Boot — terminal](screenshots/2.png)
+![Spring Boot — démarrage du serveur dans le terminal](screenshots/2.png)
 
 ---
 
@@ -177,9 +192,10 @@ L'application est accessible sur **http://localhost:4200**
 
 > Le backend doit être démarré avant le frontend.
 
-### Résultat dans le terminal
+Ce terminal montre la compilation réussie par Angular CLI : transpilation TypeScript, génération des bundles et démarrage du serveur de développement avec rechargement automatique.
+J'ai compris le cycle de build Angular 22 et le rôle de `angular.json`.
 
-![Angular — terminal ng serve](screenshots/1.png)
+![Angular CLI — compilation et démarrage avec ng serve](screenshots/1.png)
 
 ---
 
@@ -191,58 +207,76 @@ L'application est accessible sur **http://localhost:4200**
 | `GET` | `/products/{id}` | Détail d'un produit |
 | `POST` | `/products` | Créer un produit |
 | `PUT` | `/products/{id}` | Mettre à jour un produit |
-| `PATCH` | `/products/{id}` | Modifier partiellement (ex: `checked`) |
+| `PATCH` | `/products/{id}` | Modifier partiellement (ex : `checked`) |
 | `DELETE` | `/products/{id}` | Supprimer un produit |
 
 ### Exemple de réponse `GET /products`
 
 ```json
 [
-  { "id": 1, "name": "Computer",  "price": 1200.0, "checked": true  },
-  { "id": 2, "name": "Phone",     "price":  800.0, "checked": false },
-  { "id": 3, "name": "Printer",   "price":  300.0, "checked": false }
+  { "id": 1, "name": "Computer", "price": 1200.0, "checked": true  },
+  { "id": 2, "name": "Phone",    "price":  800.0, "checked": false },
+  { "id": 3, "name": "Printer",  "price":  300.0, "checked": false }
 ]
 ```
 
-**En-tête de réponse :** `X-Total-Count: 12` ← utilisé par Angular pour calculer le nombre de pages.
-
-### Réponse réelle dans le navigateur
-
-![API GET /products — navigateur](screenshots/7.png)
+**En-tête de réponse :** `X-Total-Count: 12` — utilisé par Angular pour calculer le nombre de pages.
 
 ---
 
-## Captures d'écran
+### Réponse GET en direct depuis le navigateur
 
-### 1 — Page d'accueil
+La réponse JSON confirme que le backend est opérationnel et que la sérialisation JPA fonctionne : structure des objets (`id`, `name`, `price`, `checked`) et en-tête `X-Total-Count` pour la pagination côté Angular.
+J'ai validé ici le bon fonctionnement des endpoints REST avant d'intégrer `HttpClient`.
 
-![Home](screenshots/1-home.png)
+![API GET /products — réponse JSON dans le navigateur](screenshots/7.png)
 
-![Application — page d'accueil](screenshots/6.png)
+---
 
-### 2 — Liste des produits
+### Démonstration des opérations CRUD
 
-![Products](screenshots/2-products.png)
+#### Lecture — GET /products
 
-### 3 — GET (lecture des produits via API)
+Cette capture montre la réponse complète de `GET /products` dans les outils de développement du navigateur, avec la liste des produits au format JSON.
+J'ai compris comment `HttpClient` consomme l'API et mappe les données vers des objets TypeScript typés.
 
-![GET](screenshots/3-GET.png)
+![Requête GET — lecture de la liste des produits](screenshots/3-GET.png)
 
-### 4 — DELETE (suppression d'un produit)
+---
 
-![DELETE](screenshots/4-DELETE.png)
+#### Suppression — DELETE /products/{id}
 
-### 5 — GET après suppression
+La requête `DELETE /products/{id}` en action confirme la suppression de la ressource via le code de statut HTTP retourné.
+J'ai appris à déclencher un DELETE depuis Angular et à rafraîchir la liste immédiatement après.
 
-![GET AFTER DELETE](screenshots/5-GET-AFTER-DELETE.png)
+![Requête DELETE — suppression d'un produit](screenshots/4-DELETE.png)
 
-### 6 — PUT (modification d'un produit)
+---
 
-![PUT](screenshots/6-PUT.png)
+#### GET après suppression
 
-### 7 — GET après modification
+Ce second `GET /products` confirme que le produit supprimé a disparu de la liste, illustrant le cycle : action → appel API → mise à jour de l'état via `AppStateService`.
+J'ai compris l'importance de synchroniser l'état Angular avec la réalité côté serveur.
 
-![GET AFTER PUT](screenshots/7-GET-AFTER-PUT.png)
+![GET après DELETE — liste mise à jour sans le produit supprimé](screenshots/5-GET-AFTER-DELETE.png)
+
+---
+
+#### Modification — PUT /products/{id}
+
+La requête `PUT /products/{id}` transmet le corps JSON complet des données modifiées au backend.
+J'ai appris à construire des formulaires réactifs (`ReactiveFormsModule`), à pré-remplir les champs depuis `GET /products/{id}` et à soumettre via `HttpClient`.
+
+![Requête PUT — modification complète d'un produit](screenshots/6-PUT.png)
+
+---
+
+#### GET après modification
+
+La liste après modification confirme que les nouvelles valeurs (`name`, `price`) ont été correctement persistées côté backend.
+J'ai validé le cycle complet `Edit → PUT → GET` et la cohérence des données entre Angular 22 et Spring Boot.
+
+![GET après PUT — liste avec le produit modifié](screenshots/7-GET-AFTER-PUT.png)
 
 ---
 
@@ -274,16 +308,16 @@ public class Product {
 
 ## Conclusion
 
-Ce projet démontre une architecture **full-stack professionnelle** combinant :
+Ce projet démontre une architecture **full-stack** combinant :
 
-- Un **frontend Angular 22** organisé en couches (pages, shared, services, models)  
-- Un **backend Spring Boot 3** avec API REST paginée et CORS configuré  
-- Une **base H2 in-memory** pré-remplie pour les démonstrations  
-- Un **intercepteur HTTP** pour la gestion centralisée du spinner de chargement  
-- Un **AppStateService** pour la gestion de l'état global de l'application  
+- Un **frontend Angular 22** organisé en couches (pages, shared, services, models)
+- Un **backend Spring Boot 3** avec API REST paginée et CORS configuré
+- Une **base H2 in-memory** pré-remplie pour les démonstrations
+- Un **intercepteur HTTP** pour la gestion centralisée du spinner de chargement
+- Un **`AppStateService`** pour la gestion de l'état global de l'application
 
-Le projet est prêt à être cloné, exécuté et étendu.
+La réalisation de ce TP m'a permis de maîtriser les fondamentaux d'Angular 22 (composants, services, routing, formulaires réactifs, `HttpClient`) en les appliquant sur un cas concret d'API REST Spring Boot. Le projet est prêt à être cloné, exécuté et étendu.
 
 ---
 
-*Développé par **Bouchra Rafik** — Angular 22 + Spring Boot 3 — 2025*
+*Développé par **Bouchra Rafik** — Angular 22 + Spring Boot 3 — Année 2025–2026*
