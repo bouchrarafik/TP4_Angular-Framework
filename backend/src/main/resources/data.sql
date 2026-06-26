@@ -1,0 +1,12 @@
+INSERT INTO product (name, price, checked) VALUES ('Computer', 1200.0, true);
+INSERT INTO product (name, price, checked) VALUES ('Phone', 800.0, false);
+INSERT INTO product (name, price, checked) VALUES ('Printer', 300.0, false);
+INSERT INTO product (name, price, checked) VALUES ('Tablet', 650.0, true);
+INSERT INTO product (name, price, checked) VALUES ('Monitor', 450.0, false);
+INSERT INTO product (name, price, checked) VALUES ('Keyboard', 120.0, false);
+INSERT INTO product (name, price, checked) VALUES ('Mouse', 80.0, true);
+INSERT INTO product (name, price, checked) VALUES ('Headset', 200.0, false);
+INSERT INTO product (name, price, checked) VALUES ('Webcam', 150.0, false);
+INSERT INTO product (name, price, checked) VALUES ('SSD 1TB', 100.0, true);
+INSERT INTO product (name, price, checked) VALUES ('RAM 16GB', 90.0, false);
+INSERT INTO product (name, price, checked) VALUES ('USB Hub', 40.0, false);
