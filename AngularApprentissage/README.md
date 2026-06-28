@@ -35,12 +35,12 @@ Application CRUD complète de gestion de produits, construite avec **Angular 22*
 La page d'accueil illustre la mise en place du routing Angular et la composition du composant partagé `navbar`.
 J'ai appris à structurer une application Angular en pages indépendantes reliées par `AppRoutingModule`.
 
-![Page d'accueil — HomeComponent](screenshots/1-home.png)
+![Page d'accueil — HomeComponent](screenshots/6.png)
 
 La page produits affiche le tableau CRUD complet : barre de recherche, résultats paginés et actions (modifier, supprimer, cocher).
 J'ai maîtrisé les directives `*ngFor` / `*ngIf`, la liaison de données bidirectionnelle et l'intégration du `ProductService`.
 
-![Liste des produits — vue CRUD complète](screenshots/2-products.png)
+![Liste des produits — réponse JSON GET /products](screenshots/13.png)
 
 ---
 
@@ -229,7 +229,7 @@ J'ai compris le cycle de build Angular 22 et le rôle de `angular.json`.
 La réponse JSON confirme que le backend est opérationnel et que la sérialisation JPA fonctionne : structure des objets (`id`, `name`, `price`, `checked`) et en-tête `X-Total-Count` pour la pagination côté Angular.
 J'ai validé ici le bon fonctionnement des endpoints REST avant d'intégrer `HttpClient`.
 
-![API GET /products — réponse JSON dans le navigateur](screenshots/7.png)
+![API GET /products — réponse JSON dans le navigateur](screenshots/13.png)
 
 ---
 
@@ -240,7 +240,7 @@ J'ai validé ici le bon fonctionnement des endpoints REST avant d'intégrer `Htt
 Cette capture montre la réponse complète de `GET /products` dans les outils de développement du navigateur, avec la liste des produits au format JSON.
 J'ai compris comment `HttpClient` consomme l'API et mappe les données vers des objets TypeScript typés.
 
-![Requête GET — lecture de la liste des produits](screenshots/3-GET.png)
+![Requête GET — lecture de la liste des produits](screenshots/18.png)
 
 ---
 
@@ -249,7 +249,7 @@ J'ai compris comment `HttpClient` consomme l'API et mappe les données vers des 
 La requête `DELETE /products/{id}` en action confirme la suppression de la ressource via le code de statut HTTP retourné.
 J'ai appris à déclencher un DELETE depuis Angular et à rafraîchir la liste immédiatement après.
 
-![Requête DELETE — suppression d'un produit](screenshots/4-DELETE.png)
+![Requête DELETE — suppression d'un produit](screenshots/14.png)
 
 ---
 
@@ -258,7 +258,7 @@ J'ai appris à déclencher un DELETE depuis Angular et à rafraîchir la liste i
 Ce second `GET /products` confirme que le produit supprimé a disparu de la liste, illustrant le cycle : action → appel API → mise à jour de l'état via `AppStateService`.
 J'ai compris l'importance de synchroniser l'état Angular avec la réalité côté serveur.
 
-![GET après DELETE — liste mise à jour sans le produit supprimé](screenshots/5-GET-AFTER-DELETE.png)
+![GET après DELETE — liste mise à jour sans le produit supprimé](screenshots/15.png)
 
 ---
 
@@ -267,7 +267,7 @@ J'ai compris l'importance de synchroniser l'état Angular avec la réalité côt
 La requête `PUT /products/{id}` transmet le corps JSON complet des données modifiées au backend.
 J'ai appris à construire des formulaires réactifs (`ReactiveFormsModule`), à pré-remplir les champs depuis `GET /products/{id}` et à soumettre via `HttpClient`.
 
-![Requête PUT — modification complète d'un produit](screenshots/6-PUT.png)
+![Requête PUT — modification complète d'un produit](screenshots/16.png)
 
 ---
 
@@ -276,7 +276,7 @@ J'ai appris à construire des formulaires réactifs (`ReactiveFormsModule`), à 
 La liste après modification confirme que les nouvelles valeurs (`name`, `price`) ont été correctement persistées côté backend.
 J'ai validé le cycle complet `Edit → PUT → GET` et la cohérence des données entre Angular 22 et Spring Boot.
 
-![GET après PUT — liste avec le produit modifié](screenshots/7-GET-AFTER-PUT.png)
+![GET après PUT — liste avec le produit modifié](screenshots/17.png)
 
 ---
 
